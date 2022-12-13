@@ -145,7 +145,7 @@ helm uninstall merrychristmas -n merrychristmas
 ```
 ### Deinstall rke2
 ```bash
-sudo /usr/bin/rke2-uninstall.sh
+sudo /usr/local/bin/rke2-uninstall.sh
 ```
 
 ### Sources
