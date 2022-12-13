@@ -100,14 +100,14 @@ helm upgrade --install merrychristmas bitnami/nginx \
   --timeout 600s \
   --set global.storageClass="localPath" \
   --set cloneStaticSiteFromGit.enabled=true \
-  --set cloneStaticSiteFromGit.repository="https://github.com/cmeyer29/scratch-on-k3s.git" \
+  --set cloneStaticSiteFromGit.repository="https://github.com/cmeyer29/scratch-on-rke2.git" \
   --set cloneStaticSiteFromGit.branch="main" \
   --set cloneStaticSiteFromGit.interval=3600 \
   --set service.type="ClusterIP" \
   --set ingress.enabled=true \
   --set ingress.hostname="merrychristmas.toyou" \
   --set ingress.path="/"  \
-  --set ingress.ingressClassName="traefik"
+  --set ingress.ingressClassName="rke2-ingress-nginx"
 ```
 
 ### DNS Configuration on the host
@@ -150,7 +150,7 @@ helm uninstall merrychristmas -n merrychristmas
 
 ### Sources
 
-- [k3s Installation](https://docs.k3s.io/installation)
+- [rke2 Installation](https://docs.rke2.io/)
 - [helm Installation](https://helm.sh/docs/helm/helm_install/)
 - [Bitnami Nginx Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/nginx/)
 - [Scratch 3.0](https://scratch.mit.edu/)
