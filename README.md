@@ -90,10 +90,15 @@ sudo chmod 755 /usr/local/bin/helm
 sudo ln -s /usr/local/bin/helm /usr/local/bin/helm3
 helm list --all-namespaces
 ```
-### Installing the nginx Webserver-Deployments
+### Adding the bitnami nginx helm repo
 For the deployment we are using the standard public nginx helm charts from bitnami. You can optionally fetch the whole chart data from the repository.
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
+```
+
+### Installing the Christmas Special Webserver-Deployments
+For the deployment we are using the standard public nginx helm charts from bitnami. You can optionally fetch the whole chart data from the repository.
+```bash
 helm upgrade --install merrychristmas bitnami/nginx \
   --namespace merrychristmas \
   --create-namespace \
