@@ -44,14 +44,15 @@ spec:
 EOF
 
 sudo systemctl restart rke2-server.service
+sudo cp /var/lib/rancher/rke2/bin/kubectl /usr/local/bin/kubectl
 
 ```
 ## rke2 Testing and Configuration
 ```bash
 sudo systemctl status rke2-server -l
-/var/lib/rancher/rke2/bin/kubectl get nodes -A
-/var/lib/rancher/rke2/bin/kubectl get addon -A
-/var/lib/rancher/rke2/bin/kubectl get pods --all-namespace
+kubectl get nodes -A
+kubectl get addon -A
+kubectl get pods --all-namespace
 echo "#####################"
 echo "#####################"
 echo "#####################"
@@ -124,12 +125,12 @@ sudo sed -i '/^127.0.0.1/ s/$/ merrychristmas.toyou /' /etc/hosts
 ### DNS Configuration within the CoreDNS ConfigMap
 You need the set an entry within the CoreDNS ConfigMap for a functioning DNS Resolution
 ```bash
-/var/lib/rancher/rke2/bin/kubectl edit cm -n kube-system rke2-coredns-rke2-coredns
+kubectl edit cm -n kube-system rke2-coredns-rke2-coredns
 ```
 ### Reloading the CoreDNS ConfigMap
 in order to reload the changed ConfigMap we have to delete the current CoreDNS pod
 ```bash
-/var/lib/rancher/rke2/bin/kubectl delete pods -n kube-system $(/var/lib/rancher/rke2/bin/kubectl get pods -n kube-system | grep -i rke2-coredns-rke2-coredns | cut -d' ' -f1)
+kubectl delete pods -n kube-system $(/var/lib/rancher/rke2/bin/kubectl get pods -n kube-system | grep -i rke2-coredns-rke2-coredns | cut -d' ' -f1)
 ```
 
 ### Testing
