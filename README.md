@@ -119,12 +119,12 @@ sudo sed -i '/^127.0.0.1/ s/$/ merrychristmas.toyou /' /etc/hosts
 ### DNS Configuration within the CoreDNS ConfigMap
 You need the set an entry within the CoreDNS ConfigMap for a functioning DNS Resolution
 ```bash
-kubectl edit cm -n kube-system coredns
+kubectl edit cm -n kube-system rke2-coredns-rke2-coredns
 ```
 ### Reloading the CoreDNS ConfigMap
 in order to reload the changed ConfigMap we have to delete the current CoreDNS pod
 ```bash
-kubectl delete pods -n kube-system $(kubectl get pods -n kube-system | grep -i coredns | cut -d' ' -f1)
+kubectl delete pods -n kube-system $(kubectl get pods -n kube-system | grep -i rke2-coredns-rke2-coredns | cut -d' ' -f1)
 ```
 
 ### Testing
@@ -143,9 +143,9 @@ firefox --new-window http://merrychristmas.toyou
 ```bash
 helm uninstall merrychristmas -n merrychristmas 
 ```
-### Deinstall k3s
+### Deinstall rke2
 ```bash
-/usr/local/bin/k3s-uninstall.sh
+/usr/bin/rke2-uninstall.sh
 ```
 
 ### Sources
