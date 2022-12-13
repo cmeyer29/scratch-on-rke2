@@ -119,12 +119,12 @@ sudo sed -i '/^127.0.0.1/ s/$/ merrychristmas.toyou /' /etc/hosts
 ### DNS Configuration within the CoreDNS ConfigMap
 You need the set an entry within the CoreDNS ConfigMap for a functioning DNS Resolution
 ```bash
-kubectl edit cm -n kube-system rke2-coredns-rke2-coredns
+/var/lib/rancher/rke2/bin/kubectl edit cm -n kube-system rke2-coredns-rke2-coredns
 ```
 ### Reloading the CoreDNS ConfigMap
 in order to reload the changed ConfigMap we have to delete the current CoreDNS pod
 ```bash
-kubectl delete pods -n kube-system $(kubectl get pods -n kube-system | grep -i rke2-coredns-rke2-coredns | cut -d' ' -f1)
+/var/lib/rancher/rke2/bin/kubectl delete pods -n kube-system $(/var/lib/rancher/rke2/bin/kubectl get pods -n kube-system | grep -i rke2-coredns-rke2-coredns | cut -d' ' -f1)
 ```
 
 ### Testing
