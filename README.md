@@ -104,7 +104,6 @@ helm upgrade --install merrychristmas bitnami/nginx \
   --namespace merrychristmas \
   --create-namespace \
   --timeout 600s \
-  --set global.storageClass="localPath" \
   --set cloneStaticSiteFromGit.enabled=true \
   --set cloneStaticSiteFromGit.repository="https://github.com/cmeyer29/scratch-on-rke2.git" \
   --set cloneStaticSiteFromGit.branch="main" \
@@ -112,8 +111,7 @@ helm upgrade --install merrychristmas bitnami/nginx \
   --set service.type="ClusterIP" \
   --set ingress.enabled=true \
   --set ingress.hostname="merrychristmas.toyou" \
-  --set ingress.path="/"  \
-  --set ingress.ingressClassName="rke2-ingress-nginx"
+  --set ingress.path="/"  
 ```
 
 ### DNS Configuration on the host
