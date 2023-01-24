@@ -16,7 +16,7 @@ For deploying the game there are several task to do
 ### Installing a standard rke2 Single-Node-Clusters 
 
 ```bash
-export RKE2_VERSION="stable"
+export RKE2_VERSION="1.24.9+rke2r2"
 export KUBECONFIG="/etc/rancher/rke2/rke2.yaml"
 export NODE_NAME=$(hostname -f)
 export NODE_IP=$(ip -4 -o a | grep -i ens3 | tr -s ' ' | cut -d ' ' -f4 | cut -d '/' -f1)
@@ -30,7 +30,7 @@ sudo systemctl start rke2-server.service
 sudo systemctl status rke2-server -l
 sudo sed -i "s/127.0.0.1/${NODE_IP}/g" /etc/rancher/rke2/rke2.yaml
 printf '\nKUBECONFIG="/etc/rancher/rke2/rke2.yaml"\n' | sudo tee -a /etc/environment
-sudo tee /var/lib/rancher/rke2/server/manifests/traefik-config.yaml <<EOF
+sudo tee /var/lib/rancher/rke2/server/manifests/nginx-ingress-config.yaml <<EOF
 apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
 metadata:
