@@ -66,7 +66,7 @@ In order to install helm you can use the following script
 ```bash
 export ARCH="amd64"
 export ARCH_X=$(uname -m)
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export KUBECONFIG="/etc/rancher/rke2/rke2.yaml"
 [[ ${ARCH_X} == "x86_64" ]] \
   && (export ARCH="amd64" && export ARCH_BIT="64bit") \
   || (export ARCH=${ARCH_X} && export ARCH_BIT=${ARCH_X})
